@@ -46,5 +46,5 @@ fn test_prepend() {
 
 #[test]
 fn test_from_vec() {
-    let _: ZmqMessage = Vec::<u8>::new().into();
+    let _: ZmqMessage = Vec::<u8>::with_capacity(100).into();
 }

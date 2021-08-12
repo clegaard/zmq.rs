@@ -111,7 +111,8 @@ impl From<&str> for ZmqMessage {
 
 impl From<Vec<u8>> for ZmqMessage {
     fn from(bytes: Vec<u8>) -> Self {
-        bytes.into()
+        let bytes = Bytes::from(bytes);
+        ZmqMessage::from(bytes)
     }
 }
 
