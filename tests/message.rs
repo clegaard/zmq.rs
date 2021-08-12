@@ -43,3 +43,8 @@ fn test_prepend() {
     assert_eq!(m.get(3), Some(&Bytes::from("data1")));
     assert_eq!(m.get(4), Some(&Bytes::from("data2")));
 }
+
+#[test]
+fn test_from_vec() {
+    let _: ZmqMessage = Vec::<u8>::new().into();
+}

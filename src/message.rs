@@ -109,6 +109,22 @@ impl From<&str> for ZmqMessage {
     }
 }
 
+impl From<Vec<u8>> for ZmqMessage {
+    fn from(bytes: Vec<u8>) -> Self {
+        bytes.into()
+    }
+}
+
+impl From<ZmqMessage> for Vec<u8> {
+    fn from(msg: ZmqMessage) -> Self {
+        let mut buf: Vec<u8> = Vec::new();
+        for b in msg.frames.iter().rev() {
+            buf.extend(b);
+        }
+        buf
+    }
+}
+
 impl TryFrom<ZmqMessage> for String {
     type Error = &'static str;
 
